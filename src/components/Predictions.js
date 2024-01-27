@@ -17,7 +17,7 @@ const Predictions = ({ sign, predictionType }) => {
     const [scores, setScores] = useState({})
     const [isloading, setIsLoading] = useState(true)
     const [displayData, setDisplayData] = useState({})
-    const colors = { 'total_score': 'linear-gradient(137deg, #4923FF -22.03%, #A521FF 142.13%)', 'relationship': 'linear-gradient(137deg, #1A91FF -22.03%, #2FD38E 142.13%)', 'career': 'linear-gradient(137deg, #DDCF4F -22.03%, #D3562F 142.13%)', 'family': 'linear-gradient(137deg, #0FC398 -22.03%, #5AD32F 142.13%)', 'health': 'linear-gradient(137deg, #DD4F4F -22.03%, #D32FAF 142.13%)', 'finances': 'linear-gradient(137deg, #DDCF4F -22.03%, #D3562F 142.13%)', 'travel': 'linear-gradient(137deg, #1A91FF -22.03%, #2FD38E 142.13%)', 'friends': 'linear-gradient(137deg, #DD4F4F -22.03%, #D32FAF 142.13%)', 'status': 'linear-gradient(137deg, #0FC398 -22.03%, #5AD32F 142.13%)', 'physique': 'linear-gradient(137deg, #DDCF4F -22.03%, #D3562F 142.13%)', 'education':'linear-gradient(137deg, #DD4F4F -22.03%, #D32FAF 142.13%)' }
+    const colors = { 'total_score': 'linear-gradient(137deg, #4923FF -22.03%, #A521FF 142.13%)', 'relationship': 'linear-gradient(137deg, #1A91FF -22.03%, #2FD38E 142.13%)', 'career': 'linear-gradient(137deg, #DDCF4F -22.03%, #D3562F 142.13%)', 'family': 'linear-gradient(137deg, #0FC398 -22.03%, #5AD32F 142.13%)', 'health': 'linear-gradient(137deg, #DD4F4F -22.03%, #D32FAF 142.13%)', 'finances': 'linear-gradient(137deg, #DDCF4F -22.03%, #D3562F 142.13%)', 'travel': 'linear-gradient(137deg, #1A91FF -22.03%, #2FD38E 142.13%)', 'friends': 'linear-gradient(137deg, #DD4F4F -22.03%, #D32FAF 142.13%)', 'status': 'linear-gradient(137deg, #0FC398 -22.03%, #5AD32F 142.13%)', 'physique': 'linear-gradient(137deg, #DDCF4F -22.03%, #D3562F 142.13%)', 'education': 'linear-gradient(137deg, #DD4F4F -22.03%, #D32FAF 142.13%)' }
 
     const fetchData = async () => {
         let DisplayData = {}
@@ -39,9 +39,11 @@ const Predictions = ({ sign, predictionType }) => {
 
     useEffect(() => {
         setIsLoading(true)
+        setScores({})
         if (sign > 0) {
             fetchData()
         }
+
     }, [sign, predictionType])
 
 
@@ -60,7 +62,7 @@ const Predictions = ({ sign, predictionType }) => {
         {Object.keys(scores).map((key) => (
             key !== 'colors' ? <Scores key={key} score={scores[key]} val={key} color={predictionType === 'Daily' ? scores.colors[key] : null} type={predictionType} /> : null)
         )}
-    </div> : <PredictionYearly displayData={scores} predictionType={predictionType} />  : <div style={{ paddingTop: '27px' }}>Data is loading</div>
+    </div> : <PredictionYearly displayData={scores} predictionType={predictionType} /> : <div style={{ paddingTop: '27px' }}>Data is loading</div>
 
 }
 

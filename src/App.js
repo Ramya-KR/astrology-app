@@ -8,15 +8,13 @@ const App = () => {
   const [sign, setSign] = useState(1)
   const [isActive, setIsActive] = useState(true)
 
-  console.log(isActive)
-
   const handleClick = (value) => {
     setSign(value)
     setIsActive(true)
   }
 
   const handlePrediction = (buttonText) => {
-    setSign(0)
+    setSign(1)
     setPredictionType(buttonText)
   }
 
@@ -37,7 +35,7 @@ const App = () => {
         ))}
       </div>
       <div>
-         {sign  ? <Predictions sign={sign} predictionType={predictionType} />:null}
+        <Predictions key={predictionType+sign} sign={sign} predictionType={predictionType} />
       </div>
     </div>
   );
