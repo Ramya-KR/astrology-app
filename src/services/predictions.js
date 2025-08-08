@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseUrl = 'https://api.vedicastroapi.com/v3-json/prediction'
 
-const API_KEY = '85d783c9-cce2-5862-a6b7-b1874202b442'
+const API_KEY = '246a3c5f-ee37-59db-939a-24eb3bc68db9'
 
 
 const getDailySun = async (sign, date) => {
